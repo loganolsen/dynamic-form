@@ -1,0 +1,44 @@
+{
+  "name": "dynamic-form",
+  "version": "0.1.0",
+  "description": "Made with create-react-library",
+  "author": "loganolsen",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "lib/index.modern.js",
+  "source": "src/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test:lint": "eslint .",
+    "test:unit": "jest",
+    "test:watch": "jest --watch"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
+  },
+  "dependencies": {
+    "formik": "^1.5.2",
+    "moment": "^2.29.1",
+    "semantic-ui-calendar-react": "^0.15.3",
+    "semantic-ui-react": "^2.0.1",
+    "yup": "^0.32.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loganolsen/dynamic-form.git"
+  },
+  "keywords": [
+    "formik",
+    "dynamic",
+    "form"
+  ],
+  "bugs": {
+    "url": "https://github.com/loganolsen/dynamic-form/issues"
+  },
+  "homepage": "https://github.com/loganolsen/dynamic-form#readme"
+}
