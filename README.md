@@ -173,4 +173,4 @@ Example:
 #
 ## License
 
-&#x3D;MIT © [adover](https://github.com/adover)
+&#x3D;MIT © [loganolsen](https://github.com/loganolsen)

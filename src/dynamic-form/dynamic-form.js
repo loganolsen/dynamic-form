@@ -1,10 +1,9 @@
 import React from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { Button, Form } from 'semantic-ui-react';
 import { FormElement } from './FormElement';
 import { createYupSchema } from './yupSchemaCreator';
-import './dynamic-form.less';
+import './dynamic-form.css';
 
 const DynamicForm = ({ formData, submit, submitText = 'Submit' }) => {
   const initialValues = {};
@@ -27,7 +26,7 @@ const DynamicForm = ({ formData, submit, submitText = 'Submit' }) => {
         setFieldValue,
         setFieldTouched,
       }) => (
-        <Form>
+        <form className='ui form'>
           {formData.map((f, k) => (
             <FormElement
               key={k}
@@ -43,8 +42,10 @@ const DynamicForm = ({ formData, submit, submitText = 'Submit' }) => {
               data={f}
             />
           ))}
-          <Button primary content={submitText} onClick={handleSubmit} />
-        </Form>
+          <button className='ui button primary' type='submit' onClick={handleSubmit}>
+            {submitText}
+          </button>
+        </form>
       )}
     </Formik>
   );
