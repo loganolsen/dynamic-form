@@ -1,4 +1,4 @@
-export const defaultFormData = [
+const FormData = [
   {
     id: 'name',
     label: 'Full name',
@@ -160,3 +160,5 @@ export const defaultFormData = [
     ],
   },
 ];
+
+export default FormData;

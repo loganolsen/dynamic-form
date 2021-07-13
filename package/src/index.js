@@ -1,11 +1,13 @@
 import React from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { FormElement } from './FormElement';
-import { createYupSchema } from './yupSchemaCreator';
-import './dynamic-form.css';
+import createYupSchema from './components/yupSchemaCreator';
+import FormElement from './components/FormElement';
+import './styles.css';
 
-const DynamicForm = ({ formData, submit, submitText = 'Submit' }) => {
+const DynamicForm = ({ formData, submit, submitText = 'Submit' }) =>{
+  if (!formData) return null;
+  
   const initialValues = {};
   formData.forEach((item) => {
     initialValues[item.id] = item.value || '';
