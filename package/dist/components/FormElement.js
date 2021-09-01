@@ -33,9 +33,9 @@ function FormElement(props) {
         return x.type === "required";
       }).length > 0;
 
-      return _react2.default.createElement(
+      if (item.control === "input") return _react2.default.createElement(
         "div",
-        { className: "field " + (error && "error") },
+        { className: "field " + (touched && error && "error") },
         _react2.default.createElement(
           "label",
           { "aria-label": item.label },
@@ -55,7 +55,82 @@ function FormElement(props) {
           onChange: formProps.handleChange,
           onBlur: formProps.handleBlur
         }),
-        error && _react2.default.createElement(
+        touched && error && _react2.default.createElement(
+          "span",
+          null,
+          error
+        )
+      );
+      if (item.control === "select") return _react2.default.createElement(
+        "div",
+        { className: "field " + (touched && error && "error") },
+        _react2.default.createElement(
+          "label",
+          { "aria-label": item.label },
+          item.label,
+          required && _react2.default.createElement(
+            "font",
+            { color: "red" },
+            " *"
+          )
+        ),
+        _react2.default.createElement(
+          "select",
+          {
+            name: item.name,
+            id: item.id,
+            value: value,
+            onChange: formProps.handleChange,
+            onBlur: formProps.handleBlur
+          },
+          item.options.map(function (opt, index) {
+            return _react2.default.createElement(
+              "option",
+              { key: opt.value + "-" + index, value: opt.value },
+              opt.text
+            );
+          })
+        ),
+        touched && error && _react2.default.createElement(
+          "span",
+          null,
+          error
+        )
+      );
+      if (item.control === "radio-group") return _react2.default.createElement(
+        "div",
+        {
+          className: "field field-radio-group " + (touched && error && "error")
+        },
+        _react2.default.createElement(
+          "label",
+          { "aria-label": item.label },
+          item.label,
+          required && _react2.default.createElement(
+            "font",
+            { color: "red" },
+            " *"
+          )
+        ),
+        item.options.map(function (opt, index) {
+          return _react2.default.createElement(
+            "div",
+            { key: opt.value + "-" + index, className: "radio-button" },
+            _react2.default.createElement("input", {
+              type: item.type,
+              name: item.id,
+              id: item.id + "-" + opt.value,
+              value: opt.value,
+              onChange: formProps.handleChange
+            }),
+            _react2.default.createElement(
+              "label",
+              { htmlFor: item.id + "-" + opt.value },
+              opt.text
+            )
+          );
+        }),
+        touched && error && _react2.default.createElement(
           "span",
           null,
           error

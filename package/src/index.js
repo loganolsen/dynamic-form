@@ -1,23 +1,27 @@
-import React from 'react';
-import { Formik } from 'formik';
-import * as yup from 'yup';
-import createYupSchema from './components/yupSchemaCreator';
-import FormElement from './components/FormElement';
-import './styles.css';
+import React from "react";
+import { Formik } from "formik";
+import * as yup from "yup";
+import createYupSchema from "./components/yupSchemaCreator";
+import FormElement from "./components/FormElement";
+import "./styles.css";
 
-const DynamicForm = ({ formData, submit, submitText = 'Submit' }) =>{
+const DynamicForm = ({ formData, submit, submitText = "Submit" }) => {
   if (!formData) return null;
-  
+
   const initialValues = {};
   formData.forEach((item) => {
-    initialValues[item.id] = item.value || '';
+    initialValues[item.id] = item.value || "";
   });
 
   const yupSchema = formData.reduce(createYupSchema, {});
   const validateSchema = yup.object().shape(yupSchema);
 
   return (
-    <Formik initialValues={initialValues} validationSchema={validateSchema} onSubmit={submit}>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validateSchema}
+      onSubmit={submit}
+    >
       {({
         values,
         errors,
@@ -28,7 +32,7 @@ const DynamicForm = ({ formData, submit, submitText = 'Submit' }) =>{
         setFieldValue,
         setFieldTouched,
       }) => (
-        <form className='ui form'>
+        <form className="ui form">
           {formData.map((f, k) => (
             <FormElement
               key={k}
@@ -44,7 +48,11 @@ const DynamicForm = ({ formData, submit, submitText = 'Submit' }) =>{
               data={f}
             />
           ))}
-          <button className='ui button primary' type='submit' onClick={handleSubmit}>
+          <button
+            className="ui button primary"
+            type="submit"
+            onClick={handleSubmit}
+          >
             {submitText}
           </button>
         </form>
